@@ -1,9 +1,24 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Superheroes" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.Superheroes" parent="Theme.Material3.DayNight">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/my_light_primary</item>
+        <item name="colorPrimaryVariant">@color/my_light_primary_variant</item>
+        <item name="actionBarItemBackground">@color/my_light_primary</item>
+        <item name="actionBarStyle">@style/ActionBar.Superheroes</item>
     </style>
+
+    <!-- ActionBar style -->
+    <style name="ActionBar.Superheroes" parent="Widget.AppCompat.ActionBar">
+        <item name="background">@color/my_light_primary</item>
+        <item name="titleTextStyle">@style/ActionBar.TitleText</item>
+    </style>
+
+    <!-- ActionBar title text style -->
+    <style name="ActionBar.TitleText" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@android:color/white</item>
+        </style>
 
     <style name="Theme.Superheroes" parent="Base.Theme.Superheroes" />
 </resources>

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Superheroes</string>
+    <string name="menu_search">Search for a Superheroe</string>
 </resources>
