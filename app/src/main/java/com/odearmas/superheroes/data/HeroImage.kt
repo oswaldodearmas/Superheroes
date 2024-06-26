@@ -4,5 +4,5 @@ import com.google.gson.annotations.SerializedName
 import java.net.URL
 
 data class HeroImage(
-    @SerializedName("image.url") val imageURL: URL
+    @SerializedName("url") val imageURL: String
 )

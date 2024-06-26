@@ -4,4 +4,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="my_light_primary">#FF6200EE</color>
     <color name="my_light_primary_variant">#FF3700B3</color>
+    <color name="backgroundText">#C0999696</color>
 </resources>

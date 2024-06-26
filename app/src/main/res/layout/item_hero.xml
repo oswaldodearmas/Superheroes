@@ -29,15 +29,19 @@
                 <ImageView
                     android:id="@+id/avatarImageView"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"/>
 
                 <TextView
                     android:id="@+id/nameTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="NO HERO BY THAT NAME. \n TRY AGAIN"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:text="NO HERO FOUND. \n TRY AGAIN"
                     android:textAlignment="center"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:textColor="@color/white"
+                    android:background="@color/backgroundText"/>
 
             </FrameLayout>
 

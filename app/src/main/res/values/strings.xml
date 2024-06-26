@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">Superheroes</string>
-    <string name="menu_search">Search for a Superheroe</string>
+    <string name="menu_search">Search for your Superhero</string>
+    <string name="search_hint">Introduce a text</string>
+    <string name="activity_detail_title_textView">Your Hero!</string>
 </resources>

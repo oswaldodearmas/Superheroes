@@ -1,14 +1,20 @@
 package com.odearmas.superheroes.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
+import androidx.appcompat.widget.SearchView.*
+import androidx.core.view.MenuItemCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import com.odearmas.superheroes.R
 import com.odearmas.superheroes.adapters.HeroAdapter
 import com.odearmas.superheroes.data.HeroAPIService
+import com.odearmas.superheroes.data.HeroListResponse
+import com.odearmas.superheroes.data.HeroResponse
 import com.odearmas.superheroes.databinding.ActivityMainBinding
+import com.odearmas.superheroes.utils.RetrofitProvider
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -18,29 +24,32 @@ import retrofit2.converter.gson.GsonConverterFactory
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
-
+    lateinit var heroListResponse: HeroListResponse
+    lateinit var hero: HeroResponse
     lateinit var adapter: HeroAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        adapter = HeroAdapter()
+        adapter = HeroAdapter { position -> navigateToDetail(heroListResponse.results[position])}
 
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = GridLayoutManager(this, 2)
 
-        searchByName("super")
+        searchByName("bat")
+
     }
 
     private fun searchByName(query: String) {
         // Llamada en segundo plano
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                val apiService = getRetrofit().create(HeroAPIService::class.java)
+                val apiService = RetrofitProvider.getRetrofit().create(HeroAPIService::class.java)
                 val result = apiService.findHeroByName(query)
                 if (result.response == "success") {
                     runOnUiThread {
+                        heroListResponse = result
                         adapter.updateData(result.results)
                     }
                 } else {
@@ -55,28 +64,20 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun getRetrofit(): Retrofit {
-        // El interceptor permite capturar el error y msotrarlo en el Log
-        /*val interceptor = HttpLoggingInterceptor()
-        interceptor.setLevel(HttpLoggingInterceptor.Level.BASIC)
-        val client: OkHttpClient = OkHttpClient.Builder().addInterceptor(interceptor).build()*/
-
-        return Retrofit.Builder()
-            .baseUrl("https://superheroapi.com/api/7252591128153666/")
-            //.client(client)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-    }
-
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.activity_main_menu, menu)
         val searchViewItem = menu.findItem(R.id.menu_search)
         val searchView = searchViewItem.actionView as SearchView
 
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        searchView.setOnQueryTextListener(object : OnQueryTextListener {
 
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                return false
+            override fun onQueryTextSubmit(newText: String?): Boolean {
+
+                searchViewItem.collapseActionView()
+                if (newText != null) {
+                    searchByName(newText)
+                }
+                return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
@@ -90,4 +91,9 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
+    fun navigateToDetail(hero: HeroResponse) {
+        val callDetail: Intent = Intent(this, DetailActivity::class.java)
+        callDetail.putExtra("hero_name", hero.name)
+        startActivity(callDetail)
+    }
 }
