@@ -6,7 +6,6 @@ import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.SearchView.*
-import androidx.core.view.MenuItemCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import com.odearmas.superheroes.R
 import com.odearmas.superheroes.adapters.HeroAdapter
@@ -18,14 +17,11 @@ import com.odearmas.superheroes.utils.RetrofitProvider
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
     lateinit var heroListResponse: HeroListResponse
-    lateinit var hero: HeroResponse
     lateinit var adapter: HeroAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val apiService = RetrofitProvider.getRetrofit().create(HeroAPIService::class.java)
-                val result = apiService.findHeroByName(query)
+                val result = apiService.searchHeroesByName(query)
                 if (result.response == "success") {
                     runOnUiThread {
                         heroListResponse = result
@@ -91,9 +87,9 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    fun navigateToDetail(hero: HeroResponse) {
+    private fun navigateToDetail(hero: HeroResponse) {
         val callDetail: Intent = Intent(this, DetailActivity::class.java)
-        callDetail.putExtra("hero_name", hero.name)
+        callDetail.putExtra("HERO_ID", hero.id)
         startActivity(callDetail)
     }
 }

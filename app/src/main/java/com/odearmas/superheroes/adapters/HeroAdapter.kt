@@ -3,7 +3,6 @@ package com.odearmas.superheroes.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.odearmas.superheroes.data.HeroImage
 import com.odearmas.superheroes.data.HeroResponse
 import com.odearmas.superheroes.databinding.ItemHeroBinding
 

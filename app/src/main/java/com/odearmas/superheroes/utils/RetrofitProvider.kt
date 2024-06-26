@@ -18,8 +18,5 @@ class RetrofitProvider {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
         }
-
-
-
     }
 }
