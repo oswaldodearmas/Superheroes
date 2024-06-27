@@ -3,4 +3,16 @@
     <string name="menu_search">Search for your Superhero</string>
     <string name="search_hint">Introduce a text</string>
     <string name="activity_detail_title_textView">Your Hero!</string>
+    <string name="hero_real_name">Real Name:</string>
+    <string name="hero_gender">Gender:</string>
+    <string name="hero_race">Race:</string>
+    <string name="hero_aliases">Aliases:</string>
+    <string name="hero_basic_data">BASIC INFO</string>
+    <string name="hero_stats">STATS</string>
+    <string name="hero_intelligence">Intelligence</string>
+    <string name="hero_strength">Strength</string>
+    <string name="hero_speed">Speed</string>
+    <string name="hero_durability">Durability</string>
+    <string name="hero_power">Power</string>
+    <string name="hero_combat">Combat</string>
 </resources>

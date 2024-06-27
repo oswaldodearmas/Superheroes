@@ -1,6 +1,9 @@
 package com.odearmas.superheroes.activities
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
+import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -19,6 +22,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.lang.StringBuilder
 
 class DetailActivity : AppCompatActivity() {
 
@@ -36,38 +40,43 @@ class DetailActivity : AppCompatActivity() {
         getHeroById(heroId)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true) //Flecha de ir atrás
-//        if (heroName != null) {
-//            val hero = searchByName(heroName)
-//            //val zodiac = zodiacId?.let { HoroscopeItem.fromId(it) }
-//            if (zodiac != null) {
-//                supportActionBar?.setDisplayHomeAsUpEnabled(true) //Flecha de ir atrásf
-//                findViewById<TextView>(R.id.selected_name_textView).text =
-//                    getString(zodiac.zodiacName)
-//                findViewById<TextView>(R.id.selected_date_textView).text = getString(zodiac.date)
-//                findViewById<ImageView>(R.id.selected_icon_imageView).setImageResource(zodiac.logo)
-//                getDailyHoroscope()
-//
-//                //determinar cuál ítem de horóscopo se ha seleccionado mediante contador
-//                var i: Int = 0
-//                for (item in horoscopeList) {
-//                    (if (horoscopeList[i].id != zodiac.id) {
-//                        i++
-//                    } else {
-//                        break
-//                    })
-//                }
-//                position = i
-//            }
-//        }
-//    }
-//
 
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+
+            android.R.id.home -> {
+                finish()
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     private fun loadData() {
         binding.activityDetailTitleTextView.text = hero.name
         Picasso.get().load(hero.image.imageURL).into(binding.selectedHeroImageView)
-        TODO() //Bind and display hero details
+        binding.heroRealNameTextView.text = hero.biography.fullName
+        binding.heroGenderTextView.text = hero.appearance.gender
+        binding.heroRaceTextView.text = hero.appearance.race
+        var index = hero.biography.aliases.size
+        var aliasesText = ""
+        hero.biography.aliases.forEach { alias ->
+            aliasesText += alias
+            if (--index > 0) {
+                aliasesText += "\n"
+            }
+        }
+        binding.heroAliasesTextView.text = aliasesText
+        binding.heroIntelligenceTextView.text = hero.powerStats.intelligence
+        binding.heroStrengthTextView.text = hero.powerStats.strength
+        binding.heroSpeedTextView.text = hero.powerStats.speed
+        binding.heroDurabilityTextView.text = hero.powerStats.durability
+        binding.heroPowerTextView.text = hero.powerStats.power
+        binding.heroCombatTextView.text = hero.powerStats.combat
+
     }
 
     private fun getHeroById(query: Int) {
@@ -79,6 +88,7 @@ class DetailActivity : AppCompatActivity() {
 
                 runOnUiThread {
                     hero = result
+                    binding.progressBar.visibility= View.GONE
                     loadData()
                 }
 

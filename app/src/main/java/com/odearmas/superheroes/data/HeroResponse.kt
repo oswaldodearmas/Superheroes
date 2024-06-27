@@ -19,7 +19,7 @@ data class Biography (
     @SerializedName("full-name") val fullName: String,
     @SerializedName("alignment") val alignment: String,
     @SerializedName("publisher") val publisher: String,
-    @SerializedName("aliases") val aliases: Array<String>
+    @SerializedName("aliases") val aliases: List<String>
 )
 
 data class HeroStats (

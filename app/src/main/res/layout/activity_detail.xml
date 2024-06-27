@@ -5,13 +5,13 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.DetailActivity">
+    tools:context=".activities.DetailActivity"
+    android:background="@drawable/background_hero_image">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="36dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,9 +34,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginBottom="8dp"
                 android:text="@string/activity_detail_title_textView"
-                android:textSize="24sp"
+                android:textColor="@color/white"
+                android:textSize="36sp"
                 android:textStyle="bold" />
 
             <FrameLayout
@@ -45,14 +45,17 @@
                 android:layout_gravity="center">
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:cardCornerRadius="15dp">
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="8dp"
+                    >
 
                     <ImageView
                         android:id="@+id/selected_hero_imageView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:maxWidth="160dp"
                         android:maxHeight="160dp"
                         android:minWidth="120dp"
@@ -60,41 +63,379 @@
                 </androidx.cardview.widget.CardView>
             </FrameLayout>
 
-            <TextView
-                android:id="@+id/selected_real_name_textView"
+            <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:textAlignment="center"
-                android:textSize="24sp" />
-
-            <ScrollView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:scrollbarSize="5dp">
 
-                <TextView
-                    android:id="@+id/hero_info_textView"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:justificationMode="inter_word"
-                    android:paddingHorizontal="10dp"
-                    android:textSize="20sp" />
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="8dp"
+                        android:layout_marginBottom="8dp"
+                        app:cardBackgroundColor="@color/backgroundText">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <ProgressBar
+                                android:id="@+id/progressBar"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:visibility="visible"
+                                app:layout_constraintBottom_toTopOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingStart="10dp"
+                                android:paddingEnd="5dp"
+                                android:text="@string/hero_basic_data"
+                                android:textColor="@color/white"
+                                android:textAlignment="center"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:paddingVertical="5dp">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingStart="10dp"
+                                    android:paddingEnd="5dp"
+                                    android:text="@string/hero_real_name"
+                                    android:textColor="@color/white"
+                                    android:textAlignment="textStart"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/hero_real_name_textView"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/white"
+                                    android:textSize="20sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:paddingVertical="5dp">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingStart="10dp"
+                                    android:paddingEnd="5dp"
+                                    android:text="@string/hero_aliases"
+                                    android:textColor="@color/white"
+                                    android:textAlignment="textStart"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/hero_aliases_textView"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/white"
+                                    android:textSize="20sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:paddingVertical="5dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:paddingStart="10dp"
+                                        android:paddingEnd="5dp"
+                                        android:text="@string/hero_gender"
+                                        android:textColor="@color/white"
+                                        android:textAlignment="textStart"
+                                        android:textSize="20sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/hero_gender_textView"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/white"
+                                        android:textSize="20sp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:paddingStart="10dp"
+                                        android:paddingEnd="5dp"
+                                        android:text="@string/hero_race"
+                                        android:textColor="@color/white"
+                                        android:textAlignment="textStart"
+                                        android:textSize="20sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/hero_race_textView"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/white"
+                                        android:textSize="20sp" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="8dp"
+                        android:layout_marginTop="8dp"
+                        app:cardBackgroundColor="@color/backgroundText">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingStart="10dp"
+
+                                android:paddingEnd="5dp"
+                                android:text="@string/hero_stats"
+                                android:textColor="@color/white"
+                                android:textAlignment="center"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:paddingVertical="5dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:paddingStart="10dp"
+                                        android:paddingEnd="5dp"
+                                        android:text="@string/hero_intelligence"
+                                        android:textColor="@color/white"
+                                        android:textAlignment="center"
+                                        android:textSize="20sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/hero_intelligence_textView"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/white"
+                                        android:textSize="20sp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:paddingStart="10dp"
+                                        android:paddingEnd="5dp"
+                                        android:text="@string/hero_strength"
+                                        android:textColor="@color/white"
+                                        android:textAlignment="center"
+                                        android:textSize="20sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/hero_strength_textView"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/white"
+                                        android:textSize="20sp" />
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:paddingVertical="5dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:paddingStart="10dp"
+                                        android:paddingEnd="5dp"
+                                        android:text="@string/hero_speed"
+                                        android:textColor="@color/white"
+                                        android:textAlignment="center"
+                                        android:textSize="20sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/hero_speed_textView"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/white"
+                                        android:textSize="20sp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:paddingStart="10dp"
+                                        android:paddingEnd="5dp"
+                                        android:text="@string/hero_durability"
+                                        android:textColor="@color/white"
+                                        android:textAlignment="center"
+                                        android:textSize="20sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/hero_durability_textView"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/white"
+                                        android:textSize="20sp" />
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:paddingVertical="5dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:paddingStart="10dp"
+                                        android:paddingEnd="5dp"
+                                        android:text="@string/hero_power"
+                                        android:textColor="@color/white"
+                                        android:textAlignment="center"
+                                        android:textSize="20sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/hero_power_textView"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/white"
+                                        android:textSize="20sp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:paddingStart="10dp"
+                                        android:paddingEnd="5dp"
+                                        android:text="@string/hero_combat"
+                                        android:textColor="@color/white"
+                                        android:textAlignment="center"
+                                        android:textSize="20sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/hero_combat_textView"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/white"
+                                        android:textSize="20sp" />
+                                </LinearLayout>
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
             </ScrollView>
-
-            <ProgressBar
-                android:id="@+id/progressBar"
-                android:layout_width="wrap_content"
-                android:layout_height="189dp"
-                android:layout_gravity="center"
-                android:visibility="gone"
-                app:layout_constraintBottom_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
         </LinearLayout>
+
 
         <!--        <LinearLayout-->
         <!--            android:id="@+id/activity_detail_buttons_linearLayout"-->
