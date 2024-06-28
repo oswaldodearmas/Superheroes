@@ -55,6 +55,7 @@
                         android:id="@+id/selected_hero_imageView"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:contentDescription="@string/hero_image"
                         android:maxWidth="160dp"
                         android:maxHeight="160dp"
                         android:minWidth="120dp"
@@ -315,7 +316,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal"
-                                android:paddingVertical="5dp">
+                                android:paddingVertical="5dp"
+                                android:baselineAligned="false">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
