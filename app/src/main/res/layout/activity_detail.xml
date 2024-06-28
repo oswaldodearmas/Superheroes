@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.DetailActivity"
-    android:background="@drawable/background_hero_image">
+    android:background="@drawable/background_image">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -49,8 +49,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="8dp"
                     app:cardCornerRadius="15dp"
-                    app:cardElevation="8dp"
-                    >
+                    app:cardElevation="8dp">
 
                     <ImageView
                         android:id="@+id/selected_hero_imageView"
@@ -165,7 +164,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal"
-                                android:paddingVertical="5dp">
+                                android:paddingVertical="5dp"
+                                android:baselineAligned="false">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -254,7 +254,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal"
-                                android:paddingVertical="5dp">
+                                android:paddingVertical="5dp"
+                                android:baselineAligned="false">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -320,7 +321,8 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:baselineAligned="false">
 
                                     <TextView
                                         android:layout_width="match_parent"
@@ -374,7 +376,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal"
-                                android:paddingVertical="5dp">
+                                android:paddingVertical="5dp"
+                                android:baselineAligned="false">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
